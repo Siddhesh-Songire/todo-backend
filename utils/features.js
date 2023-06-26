@@ -1,16 +1,16 @@
 import jwt from "jsonwebtoken";
 
-export const sendCookie = (user, res) => {
+export const sendCookie = (user, res, status_code = 201, message) => {
   const token = jwt.sign({ _id: user.id }, process.env.JWT_SECRET);
 
   res
-    .status(201)
+    .status(status_code)
     .cookie("token", token, {
       httpOnly: true,
       maxAge: 15 * 60 * 1000,
     })
     .json({
       success: true,
-      message: "Registerd Successfully",
+      message: message,
     });
 };
