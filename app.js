@@ -2,6 +2,7 @@ import express from "express";
 import mongoose from "mongoose";
 import dotenv from "dotenv";
 import userRouter from "./routes/user.js";
+import cookieParser from "cookie-parser";
 
 dotenv.config();
 
@@ -15,6 +16,7 @@ mongoose
   .catch((e) => console.log(e));
 
 app.use(express.json());
+app.use(cookieParser());
 
 app.get("/", (req, res) => {
   res.send("<p>some html</p>");
