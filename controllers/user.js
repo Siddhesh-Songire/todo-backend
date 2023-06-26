@@ -59,3 +59,15 @@ export const getMyProfile = (req, res) => {
     user: req.user,
   });
 };
+
+export const logout = (req, res) => {
+  res
+    .status(200)
+    .cookie("token", "", { expires: new Date(Date.now()) })
+    //  res.clearCookie('token'); alternate easy method
+    .json({
+      success: true,
+      message: "Successfully Logged Out",
+      user: req.user,
+    });
+};
