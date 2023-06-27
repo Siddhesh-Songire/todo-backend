@@ -2,6 +2,7 @@ import express from "express";
 import mongoose from "mongoose";
 import dotenv from "dotenv";
 import userRouter from "./routes/user.js";
+import taskRouter from "./routes/task.js";
 import cookieParser from "cookie-parser";
 
 dotenv.config();
@@ -23,6 +24,7 @@ app.get("/", (req, res) => {
 });
 
 app.use("/user", userRouter);
+app.use("/task", taskRouter);
 
 app.listen(3000, () => {
   console.log("Server is running");
