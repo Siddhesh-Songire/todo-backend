@@ -14,3 +14,14 @@ export const newTask = async (req, res) => {
     message: "Task added Successfully",
   });
 };
+
+export const getMyTask = async (req, res) => {
+  const userid = req.user._id;
+
+  const tasks = await Task.find({ user: userid });
+
+  res.status(200).json({
+    success: true,
+    tasks,
+  });
+};
